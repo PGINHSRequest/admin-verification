@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Search</title>
+</head>
+<body>
+<h2>Search Student</h2>
+<input type="text" id="searchBox" placeholder="Enter student name..." onkeyup="searchStudent()">
+<ul id="results"></ul>
+
+<script>
+// Sample student data
+const students = [
+  {name: "Juan Dela Cruz", grade: "10", section: "A"},
+  {name: "Maria Santos", grade: "11", section: "B"},
+  {name: "Pedro Reyes", grade: "12", section: "C"}
+];
+
+function searchStudent() {
+  const query = document.getElementById("searchBox").value.toLowerCase();
+  const results = students.filter(s => s.name.toLowerCase().includes(query));
+  
+  const list = document.getElementById("results");
+  list.innerHTML = "";
+  
+  results.forEach(student => {
+    const li = document.createElement("li");
+    li.textContent = `${student.name} - Grade ${student.grade}, Section ${student.section}`;
+    list.appendChild(li);
+  });
+}
+</script>
+</body>
+</html>
